@@ -1,8 +1,18 @@
+import TodoInput from "./components/TodoInput"
+import TodoCard from "./components/TodoCard"
+import TodoList from "./components/TodoList"
 function App() {
 
   return (
     <>
-      <div>{ 4 * 4 }</div>
+      <main>
+
+        <TodoInput />
+        <TodoList />
+        
+
+    
+      </main>
     </>
   )
 }

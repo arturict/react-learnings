@@ -2,26 +2,35 @@ import TodoInput from "./components/TodoInput";
 import TodoCard from "./components/TodoCard";
 import TodoList from "./components/TodoList";
 import { useState } from "react";
-function App() {
+
+
+export default function App() {
 
   const [todos, setTodos] = useState([
-    "go to the gym",
-    "eat more fruits",
-    "do more",
+   
   ]);
 
   function handleAddTodo(newTodo) {
-    return null
+    const newTodoList = [...todos, newTodo];
+    setTodos(newTodoList);
+    return
   }
-
-  return (
-    <>
-      <main>
-        <TodoInput />
-        <TodoList todos={todos} />
-      </main>
-    </>
-  );
+  function handleDeleteTodo(index) {
+    const newTodoList = todos.filter((todo, todoIndex) => {
+      return todoIndex !== index;
+    })
+    setTodos(newTodoList);
+  }
+  function handleEditTodo(todoIndex, newTodo) {
+    return (
+      <>
+        <main>
+          <TodoInput handleAddTodo={handleAddTodo} />
+          <TodoList handleDeleteTodo={handleDeleteTodo} todos={todos} />
+        </main>
+      </>
+    );
+  }
 }
 
-export default App;
+
